@@ -65,6 +65,12 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
 
@@ -73,7 +79,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Sans TC:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -102,13 +108,13 @@
 
 
 
-<meta name="description" content="2.1 词汇表征（Word Representation） 上周我们学习了RNN、GRU单元和LSTM单元。本周你会看到我们如何把这些知识用到NLP上，用于自然语言处理，深度学习已经给这一领域带来了革命性的变革。其中一个很关键的概念就是词嵌入（word embeddings），这是语言表示的一种方式，可以让算法自动的理解一些类似的词，比如男人对女人，比如国王对王后，还有其他很多的例子。通过词嵌入">
+<meta name="description" content="词汇表征（Word Representation） 上周我们学习了RNN、GRU单元和LSTM单元。本周你会看到我们如何把这些知识用到NLP上，用于自然语言处理，深度学习已经给这一领域带来了革命性的变革。其中一个很关键的概念就是词嵌入（word embeddings），这是语言表示的一种方式，可以让算法自动的理解一些类似的词，比如男人对女人，比如国王对王后，还有其他很多的例子。通过词嵌入的概念你">
 <meta name="keywords" content="mlp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="13. 自然语言处理与词嵌入（Natural Language Processing and Word Embeddings）">
 <meta property="og:url" content="http://yoursite.com/2019/04/05/l14/index.html">
 <meta property="og:site_name" content="不小凡的部落格">
-<meta property="og:description" content="2.1 词汇表征（Word Representation） 上周我们学习了RNN、GRU单元和LSTM单元。本周你会看到我们如何把这些知识用到NLP上，用于自然语言处理，深度学习已经给这一领域带来了革命性的变革。其中一个很关键的概念就是词嵌入（word embeddings），这是语言表示的一种方式，可以让算法自动的理解一些类似的词，比如男人对女人，比如国王对王后，还有其他很多的例子。通过词嵌入">
+<meta property="og:description" content="词汇表征（Word Representation） 上周我们学习了RNN、GRU单元和LSTM单元。本周你会看到我们如何把这些知识用到NLP上，用于自然语言处理，深度学习已经给这一领域带来了革命性的变革。其中一个很关键的概念就是词嵌入（word embeddings），这是语言表示的一种方式，可以让算法自动的理解一些类似的词，比如男人对女人，比如国王对王后，还有其他很多的例子。通过词嵌入的概念你">
 <meta property="og:locale" content="zh-hk">
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/68d7c930146724f39782cb57d33161e9.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/ce30c9ae7912bdb3562199bf85eca1cd.png">
@@ -120,7 +126,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/5a42eea162ddc75a1d37520618b4bcd2.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/012c07b7692aed382a2875292ea8e81b.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/cd01dd1ced86605f712cf080681db022.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/05/images/cosine_sim.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/05/l14/cosine_sim.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/ad1c7b1e85d39f56756c28787ccef892.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/fa320bd001f9dca8ec33c7a426e20d80.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/31347eca490e0ae8541140fb01c04d72.png">
@@ -147,10 +153,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/4102795b004ff090ed83dc654f585852.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/9b27d865dff73a2f10abbdc1c7fc966b.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/05/l14/equalize10.png">
-<meta property="og:updated_time" content="2019-04-09T07:44:15.659Z">
+<meta property="og:updated_time" content="2019-04-11T03:01:19.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="13. 自然语言处理与词嵌入（Natural Language Processing and Word Embeddings）">
-<meta name="twitter:description" content="2.1 词汇表征（Word Representation） 上周我们学习了RNN、GRU单元和LSTM单元。本周你会看到我们如何把这些知识用到NLP上，用于自然语言处理，深度学习已经给这一领域带来了革命性的变革。其中一个很关键的概念就是词嵌入（word embeddings），这是语言表示的一种方式，可以让算法自动的理解一些类似的词，比如男人对女人，比如国王对王后，还有其他很多的例子。通过词嵌入">
+<meta name="twitter:description" content="词汇表征（Word Representation） 上周我们学习了RNN、GRU单元和LSTM单元。本周你会看到我们如何把这些知识用到NLP上，用于自然语言处理，深度学习已经给这一领域带来了革命性的变革。其中一个很关键的概念就是词嵌入（word embeddings），这是语言表示的一种方式，可以让算法自动的理解一些类似的词，比如男人对女人，比如国王对王后，还有其他很多的例子。通过词嵌入的概念你">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/05/l14/68d7c930146724f39782cb57d33161e9.png">
 
 
@@ -441,7 +447,7 @@
 
       
         <hr>
-<h3 id="词汇表征word-representation">2.1 词汇表征（Word Representation）</h3>
+<h3 id="词汇表征word-representation">词汇表征（Word Representation）</h3>
 <p>上周我们学习了<strong>RNN</strong>、<strong>GRU</strong>单元和<strong>LSTM</strong>单元。本周你会看到我们如何把这些知识用到<strong>NLP</strong>上，用于自然语言处理，深度学习已经给这一领域带来了革命性的变革。其中一个很关键的概念就是词嵌入（<strong>word embeddings</strong>），这是语言表示的一种方式，可以让算法自动的理解一些类似的词，比如男人对女人，比如国王对王后，还有其他很多的例子。通过词嵌入的概念你就可以构建<strong>NLP</strong>应用了，即使你的模型标记的训练集相对较小。这周的最后我们会消除词嵌入的偏差，就是去除不想要的特性，或者学习算法有时会学到的其他类型的偏差。 <a id="more"></a> <img src="/2019/04/05/l14/68d7c930146724f39782cb57d33161e9.png"></p>
 <p>现在我们先开始讨论词汇表示，目前为止我们一直都是用词汇表来表示词，上周提到的词汇表，可能是10000个单词，我们一直用<strong>one-hot</strong>向量来表示词。比如如果<strong>man</strong>（上图编号1所示）在词典里是第5391个，那么就可以表示成一个向量，只在第5391处为1（上图编号2所示），我们用$O_{5391}$代表这个量，这里的$O$代表<strong>one-hot</strong>。接下来，如果<strong>woman</strong>是编号9853（上图编号3所示），那么就可以用$O_{9853}$来表示，这个向量只在9853处为1（上图编号4所示），其他为0，其他的词<strong>king</strong>、<strong>queen</strong>、<strong>apple</strong>、<strong>orange</strong>都可以这样表示出来这种表示方法的一大缺点就是它把每个词孤立起来，这样使得算法对相关词的泛化能力不强。</p>
 <p>举个例子，假如你已经学习到了一个语言模型，当你看到“<strong>I want a glass of orange <strong><em><strong>”，那么下一个词会是什么？很可能是</strong>juice<strong>。即使你的学习算法已经学到了“</strong>I want a glass of orange juice<strong>”这样一个很可能的句子，但如果看到“</strong>I want a glass of apple </em></strong></strong>”，因为算法不知道<strong>apple</strong>和<strong>orange</strong>的关系很接近，就像<strong>man</strong>和<strong>woman</strong>，<strong>king</strong>和<strong>queen</strong>一样。所以算法很难从已经知道的<strong>orange</strong> <strong>juice</strong>是一个常见的东西，而明白<strong>apple</strong> <strong>juice</strong>也是很常见的东西或者说常见的句子。这是因为任何两个<strong>one-hot</strong>向量的内积都是0，如果你取两个向量，比如<strong>king</strong>和<strong>queen</strong>，然后计算它们的内积，结果就是0。如果用<strong>apple</strong>和<strong>orange</strong>来计算它们的内积，结果也是0。很难区分它们之间的差别，因为这些向量内积都是一样的，所以无法知道<strong>apple</strong>和<strong>orange</strong>要比<strong>king</strong>和<strong>orange</strong>，或者<strong>queen</strong>和<strong>orange</strong>相似地多。</p>
@@ -458,7 +464,7 @@
 <p>如果我们能够学习到一个300维的特征向量，或者说300维的词嵌入，通常我们可以做一件事，把这300维的数据嵌入到一个二维空间里，这样就可以可视化了。常用的可视化算法是<strong>t-SNE算法</strong>，来自于<strong>Laurens van der Maaten</strong> 和 <strong>Geoff Hinton</strong>的论文。如果观察这种词嵌入的表示方法，你会发现<strong>man</strong>和<strong>woman</strong>这些词聚集在一块（上图编号1所示），<strong>king</strong>和<strong>queen</strong>聚集在一块（上图编号2所示），这些都是人，也都聚集在一起（上图编号3所示）。动物都聚集在一起（上图编号4所示），水果也都聚集在一起（上图编号5所示），像1、2、3、4这些数字也聚集在一起（上图编号6所示）。如果把这些生物看成一个整体，他们也聚集在一起（上图编号7所示）。</p>
 <p>在网上你可能会看到像这样的图用来可视化，300维或者更高维度的嵌入。希望你能有个整体的概念，这种词嵌入算法对于相近的概念，学到的特征也比较类似，在对这些概念可视化的时候，这些概念就比较相似，最终把它们映射为相似的特征向量。这种表示方式用的是在300维空间里的特征表示，这叫做嵌入（<strong>embeddings</strong>）。之所以叫嵌入的原因是，你可以想象一个300维的空间，我画不出来300维的空间，这里用个3维的代替（上图编号8所示）。现在取每一个单词比如<strong>orange</strong>，它对应一个3维的特征向量，所以这个词就被嵌在这个300维空间里的一个点上了（上图编号9所示），<strong>apple</strong>这个词就被嵌在这个300维空间的另一个点上了（上图编号10所示）。为了可视化，<strong>t-SNE算法</strong>把这个空间映射到低维空间，你可以画出一个2维图像然后观察，这就是这个术语嵌入的来源。</p>
 <p>词嵌入已经是<strong>NLP</strong>领域最重要的概念之一了，在自然语言处理领域。本节视频中你已经知道为什么要学习或者使用词嵌入了，下节视频我们会深入讲解如何用这些算法构建<strong>NLP</strong>算法。</p>
-<p>###2.2 使用词嵌入（Using Word Embeddings）</p>
+<h3 id="使用词嵌入using-word-embeddings">使用词嵌入（Using Word Embeddings）</h3>
 <p>上一个视频中，你已经了解不同单词的特征化表示了。这节你会看到我们如何把这种表示方法应用到<strong>NLP</strong>应用中。</p>
 <p>我们从一个例子开始，我们继续用命名实体识别的例子，如果你要找出人名，假如有一个句子：“<strong>Sally Johnson is an orange farmer.</strong>”（<strong>Sally Johnson是一个种橙子的农民</strong>），你会发现<strong>Sally Johnson</strong>就是一个人名，所以这里的输出为1。之所以能确定<strong>Sally Johnson</strong>是一个人名而不是一个公司名，是因为你知道种橙子的农民一定是一个人，前面我们已经讨论过用<strong>one-hot</strong>来表示这些单词，$x^{<1>}$ ，$x^{< 2 >}$等等。</1></p>
 <p><img src="/2019/04/05/l14/b4bf4b0cdcef0c9d021707c47d5aecda.png"></p>
@@ -474,7 +480,7 @@
 <p><img src="/2019/04/05/l14/43943c791844cc7f077f6c6f98f1f629.png"></p>
 <p>最后，词嵌入和人脸编码之间有奇妙的关系，你已经在前面的课程学到了关于人脸编码的知识了，如果你上了卷积神经网络的课程的话。你应该还记得对于人脸识别，我们训练了一个<strong>Siamese</strong>网络结构，这个网络会学习不同人脸的一个128维表示，然后通过比较编码结果来判断两个图片是否是同一个人脸，这个词嵌入的意思和这个差不多。在人脸识别领域大家喜欢用编码这个词来指代这些向量$f(x^{\left(i \right)})$，$f(x^{\left( j\right)})$（上图编号1所示），人脸识别领域和这里的词嵌入有一个不同就是，在人脸识别中我们训练一个网络，任给一个人脸照片，甚至是没有见过的照片，神经网络都会计算出相应的一个编码结果。上完后面几节课，你会更明白，我们学习词嵌入则是有一个固定的词汇表，比如10000个单词，我们学习向量$e_{1}$到$e_{10000}$，学习一个固定的编码，每一个词汇表的单词的固定嵌入，这就是人脸识别与我们接下来几节视频要讨论的算法之间的一个不同之处。这里的术语编码（<strong>encoding</strong>）和嵌入（<strong>embedding</strong>）可以互换，所以刚才讲的差别不是因为术语不一样，这个差别就是，人脸识别中的算法未来可能涉及到海量的人脸照片，而自然语言处理有一个固定的词汇表，而像一些没有出现过的单词我们就记为未知单词。</p>
 <p>这节视频里，你看到如何用词嵌入来实现这种类型的迁移学习，并且通过替换原来的<strong>one-hot</strong>表示，而是用之前的嵌入的向量，你的算法会泛化的更好，你也可以从较少的标记数据中进行学习。接下来我会给你展示一些词嵌入的特性，这之后再讨论学习这些词嵌入的算法。下个视频我们会看到词嵌入在做类比推理中发挥的作用。</p>
-<p>###2.3 词嵌入的特性（Properties of Word Embeddings）</p>
+<h3 id="词嵌入的特性properties-of-word-embeddings">词嵌入的特性（Properties of Word Embeddings）</h3>
 <p>到现在，你应该明白了词嵌入是如何帮助你构建自然语言处理应用的。词嵌入还有一个迷人的特性就是它还能帮助实现类比推理，尽管类比推理可能不是自然语言处理应用中最重要的，不过它能帮助人们理解词嵌入做了什么，以及词嵌入能够做什么，让我们来一探究竟。</p>
 <p>这是一系列你希望词嵌入可以捕捉的单词的特征表示，假如我提出一个问题，<strong>man</strong>如果对应<strong>woman</strong>，那么<strong>king</strong>应该对应什么？你们应该都能猜到<strong>king</strong>应该对应<strong>queen</strong>。能否有一种算法来自动推导出这种关系，下面就是实现的方法。</p>
 <p><img src="/2019/04/05/l14/12242657bd982acd1d80570cc090b4fe.png"></p>
@@ -535,11 +541,11 @@ $Find\ word\ w:argmax \ Sim(e_{w},e_{\text{king}} - e_{\text{man}} + e_{\text{wo
 <p><img src="/2019/04/05/l14/012c07b7692aed382a2875292ea8e81b.png"></p>
 <p>在继续下一步之前，我想再说明一下左边的这幅图（上图编号1所示），在之前我们谈到过用<strong>t-SNE</strong>算法来将单词可视化。<strong>t-SNE算法</strong>所做的就是把这些300维的数据用一种非线性的方式映射到2维平面上，可以得知<strong>t-SNE</strong>中这种映射很复杂而且很非线性。在进行<strong>t-SNE</strong>映射之后，你不能总是期望使等式成立的关系，会像左边那样成一个平行四边形，尽管在这个例子最初的300维的空间内你可以依赖这种平行四边形的关系来找到使等式成立的一对类比，通过<strong>t-SNE算法</strong>映射出的图像可能是正确的。但在大多数情况下，由于<strong>t-SNE</strong>的非线性映射，你就没法再指望这种平行四边形了，很多这种平行四边形的类比关系在<strong>t-SNE</strong>映射中都会失去原貌。</p>
 <p>现在，再继续之前，我想再快速地列举一个最常用的相似度函数，这个最常用的相似度函数叫做余弦相似度。这是我们上个幻灯片所得到的等式（下图编号1所示），在余弦相似度中，假如在向量$u$和$v$之间定义相似度:$\text{sim}\left( u,v \right) = \frac{u^{T}v}{\left| \left| u \right| \right|_{2}\left| \left| v \right| \right|_{2}}$</p>
-<p>现在我们先不看分母，分子其实就是$u$和$v$的内积。如果u和v非常相似，那么它们的内积将会很大，把整个式子叫做余弦相似度，其实就是因为该式是$u$和$v$的夹角的余弦值，所以这个角（下图编号2所示）就是Φ角，这个公式实际就是计算两向量夹角Φ角的余弦。你应该还记得在微积分中，Φ角的余弦图像是这样的（下图编号3所示），所以夹角为0度时，余弦相似度就是1，当夹角是90度角时余弦相似度就是0，当它们是180度时，图像完全跑到了相反的方向，这时相似度等于-1，这就是为什么余弦相似度对于这种类比工作能起到非常好的效果。 距离用平方距离或者欧氏距离来表示:$\left| \left| u - v \right| \right|^{2}$ <img src="/2019/04/05/l14/cd01dd1ced86605f712cf080681db022.png"> <strong>参考资料：余弦相似度</strong> 为了测量两个词的相似程度，我们需要一种方法来测量两个词的两个嵌入向量之间的相似程度。 给定两个向量$u$和$v$，余弦相似度定义如下： ${CosineSimilarity(u, v)} = \frac {u . v} {||u||_2 ||v||_2} = cos(\theta) \tag{1}$ 其中 $u.v$ 是两个向量的点积（或内积），$||u||_2$是向量$u$的范数（或长度），并且 $\theta$ 是向量$u$和$v$之间的角度。这种相似性取决于角度在向量$u$和$v$之间。如果向量$u$和$v$非常相似，它们的余弦相似性将接近1; 如果它们不相似，则余弦相似性将取较小的值。 <img src="/2019/04/05/l14/../images\cosine_sim.png" alt="osine_si"> <strong>图1：</strong>两个向量之间角度的余弦是衡量它们有多相似的指标，角度越小，两个向量越相似。</p>
+<p>现在我们先不看分母，分子其实就是$u$和$v$的内积。如果u和v非常相似，那么它们的内积将会很大，把整个式子叫做余弦相似度，其实就是因为该式是$u$和$v$的夹角的余弦值，所以这个角（下图编号2所示）就是Φ角，这个公式实际就是计算两向量夹角Φ角的余弦。你应该还记得在微积分中，Φ角的余弦图像是这样的（下图编号3所示），所以夹角为0度时，余弦相似度就是1，当夹角是90度角时余弦相似度就是0，当它们是180度时，图像完全跑到了相反的方向，这时相似度等于-1，这就是为什么余弦相似度对于这种类比工作能起到非常好的效果。 距离用平方距离或者欧氏距离来表示:$\left| \left| u - v \right| \right|^{2}$ <img src="/2019/04/05/l14/cd01dd1ced86605f712cf080681db022.png"> <strong>参考资料：余弦相似度</strong> 为了测量两个词的相似程度，我们需要一种方法来测量两个词的两个嵌入向量之间的相似程度。 给定两个向量$u$和$v$，余弦相似度定义如下： ${CosineSimilarity(u, v)} = \frac {u . v} {||u||_2 ||v||_2} = cos(\theta) \tag{1}$ 其中 $u.v$ 是两个向量的点积（或内积），$||u||_2$是向量$u$的范数（或长度），并且 $\theta$ 是向量$u$和$v$之间的角度。这种相似性取决于角度在向量$u$和$v$之间。如果向量$u$和$v$非常相似，它们的余弦相似性将接近1; 如果它们不相似，则余弦相似性将取较小的值。 <img src="/2019/04/05/l14/cosine_sim.png" alt="osine_si"> <strong>图1：</strong>两个向量之间角度的余弦是衡量它们有多相似的指标，角度越小，两个向量越相似。</p>
 <p>从学术上来说，比起测量相似度，这个函数更容易测量的是相异度，所以我们需要对其取负，这个函数才能正常工作，不过我还是觉得余弦相似度用得更多一点，这两者的主要区别是它们对$u$和$v$之间的距离标准化的方式不同。</p>
 <p>词嵌入的一个显著成果就是，可学习的类比关系的一般性。举个例子，它能学会<strong>man</strong>对于<strong>woman</strong>相当于<strong>boy</strong>对于<strong>girl</strong>，因为<strong>man</strong>和<strong>woman</strong>之间和<strong>king</strong>和<strong>queen</strong>之间，还有<strong>boy</strong>和<strong>girl</strong>之间的向量差在<strong>gender</strong>（<strong>性别</strong>）这一维都是一样的。它还能学习<strong>Canada</strong>（<strong>加拿大</strong>）的首都是<strong>Ottawa</strong>（<strong>渥太华</strong>），而渥太华对于加拿大相当于<strong>Nairobi</strong>（<strong>内罗毕</strong>）对于<strong>Kenya</strong>（<strong>肯尼亚</strong>），这些都是国家中首都城市名字。它还能学习<strong>big</strong>对于<strong>bigger</strong>相当于<strong>tall</strong>对于<strong>taller</strong>，还能学习<strong>Yen</strong>（<strong>円</strong>）对于<strong>Janpan</strong>（<strong>日本</strong>），<strong>円</strong>是日本的货币单位，相当于<strong>Ruble</strong>（<strong>卢比</strong>）对于<strong>Russia</strong>（<strong>俄罗斯</strong>）。这些东西都能够学习，只要你在大型的文本语料库上实现一个词嵌入学习算法，只要从足够大的语料库中进行学习，它就能自主地发现这些模式。</p>
 <p>在本节视频中，你见到了词嵌入是如何被用于类比推理的，可能你不会自己动手构建一个类比推理系统作为一项应用，不过希望在这些可学习的类特征的表示方式能够给你一些直观的感受。你还看知道了余弦相似度可以作为一种衡量两个词嵌入向量间相似度的办法，我们谈了许多有关这些嵌入的特性，以及如何使用它们。下节视频中，我们来讨论如何真正的学习这些词嵌入。</p>
-<p>###2.4 嵌入矩阵（Embedding Matrix）</p>
+<h3 id="嵌入矩阵embedding-matrix">嵌入矩阵（Embedding Matrix）</h3>
 <p>接下来我们要将学习词嵌入这一问题具体化，当你应用算法来学习词嵌入时，实际上是学习一个嵌入矩阵，我们来看一下这是什么意思。</p>
 <p>和之前一样，假设我们的词汇表含有10,000个单词，词汇表里有<strong>a</strong>，<strong>aaron</strong>，<strong>orange</strong>，<strong>zulu</strong>，可能还有一个未知词标记&lt;<strong>UNK</strong>&gt;。我们要做的就是学习一个嵌入矩阵$E$，它将是一个300×10,000的矩阵，如果你的词汇表里有10,000个，或者加上未知词就是10,001维。这个矩阵的各列代表的是词汇表中10,000个不同的单词所代表的不同向量。假设<strong>orange</strong>的单词编号是6257（下图编号1所示），代表词汇表中第6257个单词，我们用符号$O_{6527}$ 来表示这个<strong>one-hot</strong>向量，这个向量除了第6527个位置上是1（下图编号2所示），其余各处都为0，显然它是一个10,000维的列向量，它只在一个位置上有1，它不像图上画的那么短，它的高度应该和左边的嵌入矩阵的宽度相等。</p>
 <p><img src="/2019/04/05/l14/ad1c7b1e85d39f56756c28787ccef892.png"></p>
@@ -549,7 +555,7 @@ $Find\ word\ w:argmax \ Sim(e_{w},e_{\text{king}} - e_{\text{man}} + e_{\text{wo
 <p>更广泛来说，假如说有某个单词<strong>w</strong>，那么$e_{w}$就代表单词<strong>w</strong>的嵌入向量。同样，$EO_{j}$，$O_{j}$就是只有第$j$个位置是1的<strong>one-hot</strong>向量，得到的结果就是$e_{j}$，它表示的是字典中单词<strong>j</strong>的嵌入向量。</p>
 <p>在这一小节中，要记住的一件事就是我们的目标是学习一个嵌入矩阵$E$。在下节视频中你将会随机地初始化矩阵$E$，然后使用梯度下降法来学习这个300×10,000的矩阵中的各个参数，$E$乘以这个<strong>one-hot</strong>向量（上图编号1所示）会得到嵌入向量。再多说一点，当我们写这个等式（上图编号2所示）的时候，写出这些符号是很方便的，代表用矩阵$E$乘以<strong>one-hot</strong>向量$O_{j}$。但当你动手实现时，用大量的矩阵和向量相乘来计算它，效率是很低下的，因为<strong>one-hot</strong>向量是一个维度非常高的向量，并且几乎所有元素都是0，所以矩阵向量相乘效率太低，因为我们要乘以一大堆的0。所以在实践中你会使用一个专门的函数来单独查找矩阵$E$的某列，而不是用通常的矩阵乘法来做，但是在画示意图时（上图所示，即矩阵$E$乘以<strong>one-hot</strong>向量示意图），这样写比较方便。但是例如在<strong>Keras</strong>中就有一个嵌入层，然后我们用这个嵌入层更有效地从嵌入矩阵中提取出你需要的列，而不是对矩阵进行很慢很复杂的乘法运算。</p>
 <p>在本视频中你见到了在学习嵌入向量的过程中用来描述这些算法的符号以及关键术语，矩阵$E$它包含了词汇表中所有单词的嵌入向量。在下节视频中，我们将讨论学习矩阵$E$的具体算法。</p>
-<p>###2.5 学习词嵌入（Learning Word Embeddings）</p>
+<h3 id="学习词嵌入learning-word-embeddings">学习词嵌入（Learning Word Embeddings）</h3>
 <p>在本节视频中，你将要学习一些具体的算法来学习词嵌入。在深度学习应用于学习词嵌入的历史上，人们一开始使用的算法比较复杂，但随着时间推移，研究者们不断发现他们能用更加简单的算法来达到一样好的效果，特别是在数据集很大的情况下。但有一件事情就是，现在很多最流行的算法都十分简单，如果我一开始就介绍这些简单的算法，你可能会觉得这有点神奇，这么简单的算法究竟是怎么起作用的？稍微复杂一些的算法开始，因为我觉得这样更容易对算法的运作方式有一个更直观的了解，之后我们会对这些算法进行简化，使你能够明白即使一些简单的算法也能得到非常好的结果，我们开始吧。</p>
 <p>假如你在构建一个语言模型，并且用神经网络来实现这个模型。于是在训练过程中，你可能想要你的神经网络能够做到比如输入：“**I want a glass of orange ___.<strong>”，然后预测这句话的下一个词。在每个单词下面，我都写上了这些单词对应词汇表中的索引。实践证明，建立一个语言模型是学习词嵌入的好方法，我提出的这些想法是源于</strong>Yoshua Bengio<strong>，</strong>Rejean Ducharme<strong>，</strong>Pascal Vincent<strong>，</strong>Rejean Ducharme<strong>，</strong>Pascal Vincent<strong>还有</strong>Christian Jauvin**。</p>
 <p><img src="/2019/04/05/l14/31347eca490e0ae8541140fb01c04d72.png"></p>
@@ -565,7 +571,7 @@ $Find\ word\ w:argmax \ Sim(e_{w},e_{\text{king}} - e_{\text{man}} + e_{\text{wo
 <p>还有一个效果非常好的做法就是上下文是附近一个单词，它可能会告诉你单词<strong>glass</strong>（上图编号7所示）是一个邻近的单词。或者说我看见了单词<strong>glass</strong>，然后附近有一个词和<strong>glass</strong>位置相近，那么这个词会是什么（上图编号8所示）？这就是用附近的一个单词作为上下文。我们将在下节视频中把它公式化，这用的是一种<strong>Skip-Gram</strong>模型的思想。这是一个简单算法的例子，因为上下文相当的简单，比起之前4个词，现在只有1个，但是这种算法依然能工作得很好。</p>
 <p>研究者发现，如果你真想建立一个语言模型，用目标词的前几个单词作为上下文是常见做法（上图编号9所示）。但如果你的目标是学习词嵌入，那么你就可以用这些其他类型的上下文（上图编号10所示），它们也能得到很好的词嵌入。我会在下节视频详细介绍这些，我们会谈到<strong>Word2Vec</strong>模型。</p>
 <p>总结一下，在本节视频中你学习了语言模型问题，模型提出了一个机器学习问题，即输入一些上下文，例如目标词的前4个词然后预测出目标词，学习了提出这些问题是怎样帮助学习词嵌入的。在下节视频，你将看到如何用更简单的上下文和更简单的算法来建立从上下文到目标词的映射，这将让你能够更好地学习词嵌入，一起进入下节视频学习<strong>Word2Vec</strong>模型。</p>
-<p>###2.6 Word2Vec</p>
+<h3 id="word2vec">Word2Vec</h3>
 <p>在上个视频中你已经见到了如何学习一个神经语言模型来得到更好的词嵌入，在本视频中你会见到 <strong>Word2Vec</strong>算法，这是一种简单而且计算时更加高效的方式来学习这种类型的嵌入，让我们来看看。</p>
 <p><img src="/2019/04/05/l14/0800c19895cbf1a360379b5dc5493902.png"></p>
 <p>本视频中的大多数的想法来源于<strong>Tomas Mikolov</strong>，<strong>Kai Chen</strong>，<strong>Greg Corrado</strong> 和 <strong>Jeff Dean</strong>。</p>
@@ -593,7 +599,7 @@ $L\left( \hat y,y \right) = - \sum_{i = 1}^{10,000}{y_{i}\log \hat y_{i}}$
 <p>总结下：<strong>CBOW</strong>是从原始语句推测目标字词；而<strong>Skip-Gram</strong>正好相反，是从目标字词推测出原始语句。<strong>CBOW</strong>对小型数据库比较合适，而<strong>Skip-Gram</strong>在大型语料中表现更好。 （下图左边为<strong>CBOW</strong>，右边为<strong>Skip-Gram</strong>）</p>
 <p><img src="/2019/04/05/l14/cbow.jpg" alt="bo"> <img src="/2019/04/05/l14/skipgram.jpg" alt="kipgra"></p>
 <p>而刚才讲的<strong>Skip-Gram</strong>模型，关键问题在于<strong>softmax</strong>这个步骤的计算成本非常昂贵，因为它需要在分母里对词汇表中所有词求和。通常情况下，<strong>Skip-Gram</strong>模型用到更多点。在下个视频中，我会展示给你一个算法，它修改了训练目标使其可以运行得更有效，因此它可以让你应用在一个更大的训练集上面，也可以学到更好的词嵌入。</p>
-<p>###2.7 负采样（Negative Sampling）</p>
+<h3 id="负采样negative-sampling">负采样（Negative Sampling）</h3>
 <p>在上个视频中，你见到了<strong>Skip-Gram</strong>模型如何帮助你构造一个监督学习任务，把上下文映射到了目标词上，它如何让你学到一个实用的词嵌入。但是它的缺点就在于<strong>softmax</strong>计算起来很慢。在本视频中，你会看到一个改善过的学习问题叫做负采样，它能做到与你刚才看到的<strong>Skip-Gram</strong>模型相似的事情，但是用了一个更加有效的学习算法，让我们来看看这是怎么做到的。</p>
 <p>在本视频中大多数的想法源于<strong>Tomas Mikolov</strong>，<strong>Ilya Sutskever</strong>，<strong>Kai Chen</strong>，<strong>Greg Corrado</strong> 和 <strong>Jeff Dean</strong>。</p>
 <p>（<strong>Mikolov T, Sutskever I, Chen K, et al. Distributed Representations of Words and Phrases and their Compositionality[J]. 2013, 26:3111-3119.</strong>）</p>
@@ -615,7 +621,7 @@ $P\left( w_{i} \right) = \frac{f\left( w_{i} \right)^{\frac{3}{4}}}{\sum_{j = 1}
 <p>进行采样，所以如果$f(w_{i})$是观测到的在语料库中的某个英文词的词频，通过$\frac{3}{4}$次方的计算，使其处于完全独立的分布和训练集的观测分布两个极端之间。我并不确定这是否有理论证明，但是很多研究者现在使用这个方法，似乎也效果不错。</p>
 <p>总结一下，你已经知道了在<strong>softmax</strong>分类器中如何学到词向量，但是计算成本很高。在这个视频中，你见到了如何通过将其转化为一系列二分类问题使你可以非常有效的学习词向量。如果你使用这个算法，你将可以学到相当好的词向量。当然和深度学习的其他领域一样，有很多开源的实现，当然也有预训练过的词向量，就是其他人训练过的然后授权许可发布在网上的，所以如果你想要在<strong>NLP</strong>问题上取得进展，去下载其他人的词向量是很好的方法，在此基础上改进。</p>
 <p><strong>Skip-Gram</strong>模型就介绍到这里，在下个视频中，我会跟你分享另一个版本的词嵌入学习算法<strong>GloVe</strong>，而且这可能比你之前看到的都要简单。</p>
-<p>###2.8 GloVe 词向量（GloVe Word Vectors）</p>
+<h3 id="glove-词向量glove-word-vectors">GloVe 词向量（GloVe Word Vectors）</h3>
 <p>你已经了解了几个计算词嵌入的算法，另一个在<strong>NLP</strong>社区有着一定势头的算法是<strong>GloVe</strong>算法，这个算法并不如<strong>Word2Vec</strong>或是<strong>Skip-Gram</strong>模型用的多，但是也有人热衷于它，我认为可能是因为它简便吧，我们来看看这个算法。</p>
 <p><img src="/2019/04/05/l14/70e282d4d1abb86fd15ff7b175f4e579.png"></p>
 <p><strong>Glove</strong>算法是由<strong>Jeffrey Pennington</strong>，<strong>Richard Socher</strong>和<strong>Chris Manning</strong>发明的。</p>
@@ -634,7 +640,7 @@ $\text{mini}\text{mize}\sum_{i = 1}^{10,000}{\sum_{j = 1}^{10,000}{f\left( X_{{i
 $\left( A\theta_{i} \right)^{T}\left( A^{- T}e_{j} \right) = \theta_{i}^{T}A^{T}A^{- T}e_{j} = \theta_{i}^{T}e_{j}$
 <p>不必担心，如果你没有学过线性代数的话会，和这个算法一样有一个简单证明过程。你不能保证这些用来表示特征的轴能够等同于人类可能简单理解的轴，具体而言，第一个特征可能是个<strong>Gender</strong>、<strong>Roya</strong>、<strong>Age</strong>、<strong>Food Cost</strong>和<strong>Size</strong>的组合，它也许是名词或是一个行为动词和其他所有特征的组合，所以很难看出独立组成部分，即这个嵌入矩阵的单行部分，然后解释出它的意思。尽管有这种类型的线性变换，这个平行四边形映射也说明了我们解决了这个问题，当你在类比其他问题时，这个方法也是行得通的。因此尽管存在特征量潜在的任意线性变换，你最终还是能学习出解决类似问题的平行四边形映射。</p>
 <p>这就是词嵌入学习的内容，你现在已经了解了一些学习词嵌入的算法了，你可以在本周的编程练习里更多地运用它们。下节课讲解怎样使用这些算法来解决情感分类问题。</p>
-<p>###2.9 情感分类（Sentiment Classification）</p>
+<h3 id="情感分类sentiment-classification">情感分类（Sentiment Classification）</h3>
 <p>情感分类任务就是看一段文本，然后分辨这个人是否喜欢他们在讨论的这个东西，这是<strong>NLP</strong>中最重要的模块之一，经常用在许多应用中。情感分类一个最大的挑战就是可能标记的训练集没有那么多，但是有了词嵌入，即使只有中等大小的标记的训练集，你也能构建一个不错的情感分类器，让我们看看是怎么做到的。</p>
 <p><img src="/2019/04/05/l14/bf6f5879d33ae4ef09b32f77df84948e.png"></p>
 <p>这是一个情感分类问题的一个例子（上图所示），输入$x$是一段文本，而输出$y$是你要预测的相应情感。比如说是一个餐馆评价的星级，</p>
@@ -653,7 +659,7 @@ $\left( A\theta_{i} \right)^{T}\left( A^{- T}e_{j} \right) = \theta_{i}^{T}A^{T}
 <p>我们有一个更加复杂的模型，不用简单的把所有的词嵌入都加起来，我们用一个<strong>RNN</strong>来做情感分类。我们这样做，首先取这条评论，"<strong>Completely lacking in good taste, good service, and good ambiance.</strong>"，找出每一个<strong>one-hot</strong>向量，这里我跳过去每一个<strong>one-hot</strong>向量的表示。用每一个<strong>one-hot</strong>向量乘以词嵌入矩阵$E$，得到词嵌入表达$e$，然后把它们送进<strong>RNN</strong>里。<strong>RNN</strong>的工作就是在最后一步（上图编号1所示）计算一个特征表示，用来预测$\hat y$，这是一个多对一的网络结构的例子，我们之前已经见过了。有了这样的算法，考虑词的顺序效果就更好了，它就能意识到"<strong>things are lacking in good taste</strong>"，这是个负面的评价，“<strong>not good</strong>”也是一个负面的评价。而不像原来的算法一样，只是把所有的加在一起得到一个大的向量，根本意识不到“<strong>not good</strong>”和 “<strong>good</strong>”不是一个意思，"<strong>lacking in good taste</strong>"也是如此，等等。</p>
 <p>如果你训练一个这样的算法，最后会得到一个很合适的情感分类的算法。由于你的词嵌入是在一个更大的数据集里训练的，这样效果会更好，更好的泛化一些没有见过的新的单词。比如其他人可能会说，"<strong>Completely absent of good taste, good service, and good ambiance.</strong>"，即使<strong>absent</strong>这个词不在标记的训练集里，如果是在一亿或者一百亿单词集里训练词嵌入，它仍然可以正确判断，并且泛化的很好，甚至这些词是在训练集中用于训练词嵌入的，但是可以不在专门用来做情感分类问题的标记的训练集中。</p>
 <p>以上就是情感分类的问题，我希望你能大体了解。一旦你学习到或者从网上下载词嵌入，你就可以很快构建一个很有效的<strong>NLP</strong>系统。</p>
-<p>###2.10 词嵌入除偏（Debiasing Word Embeddings）</p>
+<h3 id="词嵌入除偏debiasing-word-embeddings">词嵌入除偏（Debiasing Word Embeddings）</h3>
 <p>现在机器学习和人工智能算法正渐渐地被信任用以辅助或是制定极其重要的决策，因此我们想尽可能地确保它们不受非预期形式偏见影响，比如说性别歧视、种族歧视等等。本节视频中我会向你展示词嵌入中一些有关减少或是消除这些形式的偏见的办法。</p>
 <p><img src="/2019/04/05/l14/25430afa93f24dc6caa6f85503bbad27.png"></p>
 <p>本节视频中当我使用术语<strong>bias</strong>时，我不是指<strong>bias</strong>本身这个词，或是偏见这种感觉，而是指性别、种族、性取向方面的偏见，那是不同的偏见，同时这也通常用于机器学习的学术讨论中。不过我们讨论的大部分内容是词嵌入是怎样学习类比像<strong>Man</strong>：<strong>Woman</strong>，就像<strong>King</strong>：<strong>Queen</strong>，不过如果你这样问，如果<strong>Man</strong>对应<strong>Computer Programmer</strong>，那么<strong>Woman</strong>会对应什么呢？所以这篇论文（上图编号1所示:<strong>Bolukbasi T, Chang K W, Zou J, et al. Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word Embeddings[J]. 2016.</strong>）的作者<strong>Tolga Bolukbasi</strong>、<strong>Kai-Wei Chang</strong>、<strong>James Zou</strong>、<strong>Venkatesh Saligrama</strong>和 <strong>Adam Kalai</strong>发现了一个十分可怕的结果，就是说一个已经完成学习的词嵌入可能会输出<strong>Man</strong>：<strong>Computer Programmer</strong>，同时输出<strong>Woman</strong>：<strong>Homemaker</strong>，那个结果看起来是错的，并且它执行了一个十分不良的性别歧视。如果算法输出的是<strong>Man</strong>：<strong>Computer Programmer</strong>，同时<strong>Woman</strong>：<strong>Computer Programmer</strong>这样子会更合理。同时他们也发现如果<strong>Father</strong>：<strong>Doctor</strong>，那么<strong>Mother</strong>应该对应什么呢？一个十分不幸的结果是，有些完成学习的词嵌入会输出<strong>Mother</strong>：<strong>Nurse</strong>。</p>
@@ -904,7 +910,7 @@ $e_2 = e_{w2B} + \mu_{\perp} \tag{7}$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#词汇表征word-representation"><span class="nav-number">1.</span> <span class="nav-text">2.1 词汇表征（Word Representation）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#词汇表征word-representation"><span class="nav-number">1.</span> <span class="nav-text">词汇表征（Word Representation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用词嵌入using-word-embeddings"><span class="nav-number">2.</span> <span class="nav-text">使用词嵌入（Using Word Embeddings）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#词嵌入的特性properties-of-word-embeddings"><span class="nav-number">3.</span> <span class="nav-text">词嵌入的特性（Properties of Word Embeddings）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入矩阵embedding-matrix"><span class="nav-number">4.</span> <span class="nav-text">嵌入矩阵（Embedding Matrix）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习词嵌入learning-word-embeddings"><span class="nav-number">5.</span> <span class="nav-text">学习词嵌入（Learning Word Embeddings）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#word2vec"><span class="nav-number">6.</span> <span class="nav-text">Word2Vec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负采样negative-sampling"><span class="nav-number">7.</span> <span class="nav-text">负采样（Negative Sampling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#glove-词向量glove-word-vectors"><span class="nav-number">8.</span> <span class="nav-text">GloVe 词向量（GloVe Word Vectors）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情感分类sentiment-classification"><span class="nav-number">9.</span> <span class="nav-text">情感分类（Sentiment Classification）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#词嵌入除偏debiasing-word-embeddings"><span class="nav-number">10.</span> <span class="nav-text">词嵌入除偏（Debiasing Word Embeddings）</span></a></li></ol></div>
             
 
           </div>
